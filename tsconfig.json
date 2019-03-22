@@ -4,7 +4,7 @@
     "module": "commonjs",
     "sourceMap": true,
     "outDir": "dist",
-    "isolatedModules": true,
+    "isolatedModules": false,
 
     "strict": true,
     "noImplicitAny": true,
@@ -16,7 +16,7 @@
     "moduleResolution": "node",
     "baseUrl": "src",
     "typeRoots": ["node_modules/@types"],
-    "types": ["node"],
+    "types": ["node", "jest"],
     "esModuleInterop": true
   }
 }
