@@ -3,6 +3,12 @@
   "version": "0.1.0",
   "description": "Build your package and create docker image",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
   "repository": "git@github.com:lumio/dockery.git",
   "author": "Benjamin Falk <benjamin.falk@cyanjoe.com>",
   "license": "MIT",
