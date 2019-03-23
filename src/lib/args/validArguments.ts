@@ -1,10 +1,12 @@
+interface Argument {
+  desc?: string;
+  uniqueGroup?: string;
+  types?: string[];
+  alias?: string;
+}
+
 interface ValidArguments {
-  [key: string]: {
-    desc?: string;
-    uniqueGroup?: string;
-    types?: string[];
-    alias?: string;
-  };
+  [key: string]: Argument;
 }
 
 const globalValidArguments: ValidArguments = {
@@ -34,4 +36,4 @@ const globalValidArguments: ValidArguments = {
   },
 };
 
-export { ValidArguments, globalValidArguments };
+export { ValidArguments, Argument, globalValidArguments };
