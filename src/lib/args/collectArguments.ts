@@ -49,6 +49,10 @@ const collectArguments = (
     if (types && types.length && types.indexOf(typeof argv[origKey]) === -1) {
       throwTypeError(prefix + origKey, types, typeof argv[origKey]);
     }
+
+    if (origKey !== key) {
+      argv[key] = argv[origKey];
+    }
   }
 
   return argv as ValidArguments;
