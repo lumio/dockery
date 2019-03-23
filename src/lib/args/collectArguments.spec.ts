@@ -25,7 +25,7 @@ describe('collectArguments', () => {
   });
 
   it('should return valid arguments', () => {
-    expect(collectArguments({ foo: 'bar' }, { foo: {}}))
+    expect(collectArguments({ foo: 'bar' }, { foo: {} }))
       .toEqual({ foo: 'bar' });
   });
 });

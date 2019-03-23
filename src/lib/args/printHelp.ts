@@ -1,5 +1,9 @@
 import kleur from 'kleur';
-import { globalValidArguments, ValidArguments, Argument } from './validArguments';
+import {
+  Argument,
+  globalValidArguments,
+  ValidArguments,
+} from './validArguments';
 
 interface ArgumentWithAliases extends Argument {
   aliases: string[];
@@ -40,7 +44,7 @@ const getArgType = (types?: string[]) => {
 const printHelp = (
   validArguments: ValidArguments = globalValidArguments,
   introText: string = defaultIntroText,
-  returnOutput: boolean = false
+  returnOutput: boolean = false,
 ) => {
   const aliases: { [key: string]: string } = {};
   const args: ArgumentListWithAliases = {};

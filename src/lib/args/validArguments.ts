@@ -10,12 +10,12 @@ interface ValidArguments {
 }
 
 const globalValidArguments: ValidArguments = {
-  d: {alias: 'directory'},
+  d: { alias: 'directory' },
   directory: {
     desc: 'Set current work directory',
     types: ['string'],
   },
-  h: {alias: 'help'},
+  h: { alias: 'help' },
   hash: {
     desc: 'Use latest commit hash as tag name',
     types: ['boolean'],
