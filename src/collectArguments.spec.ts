@@ -5,4 +5,9 @@ describe('collectArguments', () => {
     expect(() => collectArguments({ foo: 'bar' }, {}))
       .toThrow('Unknown argument \'--foo\'. Try dockery --help.');
   });
+
+  it('should return valid arguments', () => {
+    expect(collectArguments({ foo: 'bar' }, { foo: {}}))
+      .toEqual({ foo: 'bar' });
+  });
 });
