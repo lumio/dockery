@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-import collectArguments from './collectArguments';
+import collectArguments from './lib/args/collectArguments';
 
 (() => {
-  collectArguments();
+  const argv = collectArguments();
 })();
 
 // git rev-parse --short HEAD

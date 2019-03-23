@@ -1,35 +1,6 @@
 import minimist from 'minimist';
 
-interface ValidArguments {
-  [key: string]: {
-    desc?: string;
-    uniqueGroup?: string;
-    types?: string[];
-    alias?: string;
-  };
-}
-
-const globalValidArguments: ValidArguments = {
-  d: {alias: 'directory'},
-  directory: {
-    desc: 'Set current work directory',
-    types: ['string'],
-  },
-  hash: {
-    desc: 'Use latest commit hash as tag name',
-    types: ['boolean'],
-    uniqueGroup: 'tag',
-  },
-  push: {
-    desc: 'Push docker image to registry',
-    types: ['boolean'],
-  },
-  tag: {
-    desc: 'Set manual tag name',
-    types: ['string', 'number'],
-    uniqueGroup: 'tag',
-  },
-};
+import { ValidArguments, globalValidArguments } from './validArguments';
 
 const throwTypeError = (argName: string, expectedType: string[], receivedType: string) => {
   if (receivedType === 'boolean') {
@@ -79,7 +50,8 @@ const collectArguments = (
       throwTypeError(prefix + origKey, types, typeof argv[origKey]);
     }
   }
-  console.log(argv);
+
+  return argv as ValidArguments;
 };
 
 export default collectArguments;
