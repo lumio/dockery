@@ -1,17 +1,17 @@
 import runCommand from './runCommand';
 
-const getHash = async (cwd?: string) : Promise<string | boolean> => {
+const getHash = async (cwd?: string): Promise<string | boolean> => {
   try {
     const result = await runCommand(
       'git',
-      [ 'rev-parse', '--short', '--verify', 'HEAD' ],
+      ['rev-parse', '--short', '--verify', 'HEAD'],
       cwd,
-      true
+      true,
     );
 
     const hash = result.stdout.trim();
 
-    if ( !hash ) {
+    if (!hash) {
       return false;
     }
 

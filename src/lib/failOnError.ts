@@ -11,6 +11,6 @@ const failOnError = (fn: () => any) => {
 
   // Will never be called, yet TS seems to not understand process.exit
   return {} as any;
-}
+};
 
 export default failOnError;

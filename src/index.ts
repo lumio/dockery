@@ -2,9 +2,10 @@
 
 import kleur from 'kleur';
 import path from 'path';
-import failOnError from './lib/failOnError';
+
 import collectArguments from './lib/args/collectArguments';
 import printHelp from './lib/args/printHelp';
+import failOnError from './lib/failOnError';
 import getHash from './lib/getHash';
 
 (async () => {
