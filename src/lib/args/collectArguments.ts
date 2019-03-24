@@ -1,6 +1,6 @@
 import minimist from 'minimist';
 
-import { globalValidArguments, ValidArguments } from './validArguments';
+import { ArgValues, globalValidArguments, ValidArguments } from './validArguments';
 
 const throwTypeError = (argName: string, expectedType: string[], receivedType: string) => {
   if (receivedType === 'boolean') {
@@ -58,7 +58,7 @@ const collectArguments = (
     }
   }
 
-  return argv as ValidArguments;
+  return argv as ArgValues;
 };
 
 export default collectArguments;

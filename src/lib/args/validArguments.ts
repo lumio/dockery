@@ -9,6 +9,11 @@ interface ValidArguments {
   [key: string]: Argument;
 }
 
+interface ArgValues {
+  [key: string]: any;
+  _: string[];
+}
+
 const globalValidArguments: ValidArguments = {
   d: { alias: 'directory' },
   directory: {
@@ -36,4 +41,4 @@ const globalValidArguments: ValidArguments = {
   },
 };
 
-export { ValidArguments, Argument, globalValidArguments };
+export { ValidArguments, Argument, ArgValues, globalValidArguments };
