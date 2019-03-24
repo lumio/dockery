@@ -4,22 +4,22 @@ import { ArgValues, globalValidArguments, ValidArguments } from './validArgument
 
 const throwTypeError = (argName: string, expectedType: string[], receivedType: string) => {
   if (receivedType === 'boolean') {
-    throw new Error(`Expected value for ${argName}`);
+    throw new Error(`Expected value for ${argName}.\nTry dockery --help for help.`);
   }
 
   if (expectedType.length === 1) {
     throw new Error(`Expected ${argName} to be of type ${expectedType[0]} but`
-      + ` got ${receivedType}`);
+      + ` got ${receivedType}.\nTry dockery --help for help.`);
   }
 
   throw new Error(`Expected ${argName} to be one of ${expectedType.join(', ')}`
-    + ` but got ${receivedType}`);
+    + ` but got ${receivedType}.\nTry dockery --help for help.`);
 };
 
 const collectArguments = (
   argv: {[key: string]: any} = minimist(process.argv.slice(2)),
   validArguments: ValidArguments = globalValidArguments,
-) => {
+): ArgValues => {
   const argKeys = Object.keys(argv);
   const validKeys = Object.keys(validArguments);
   const usedUniqueGroups: { [key: string]: string } = {};
