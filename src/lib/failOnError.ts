@@ -1,6 +1,6 @@
 import kleur from 'kleur';
 
-const failOnError = (fn: () => any) => {
+const failOnError = <T>(fn: () => T) => {
   try {
     return fn();
   } catch (e) {
