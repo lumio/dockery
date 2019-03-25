@@ -7,7 +7,12 @@ import collectArguments from './lib/args/collectArguments';
 import printHelp from './lib/args/printHelp';
 import failOnError from './lib/failOnError';
 import generateTag from './lib/generateTag';
-import getHash from './lib/getHash';
+
+process.on('unhandledRejection', (reason, p) => {
+  console.error(kleur.red('Unhandled Rejection at: Promise'), p);
+  console.error(kleur.yellow('Reason:'), reason);
+  process.exit(1);
+});
 
 (async () => {
   const argv = await failOnError(collectArguments);
