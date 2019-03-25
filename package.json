@@ -2,6 +2,7 @@
   "name": "dockery",
   "version": "0.1.0",
   "description": "Build your package and create docker image",
+  "docker-repo": "non-repo",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
