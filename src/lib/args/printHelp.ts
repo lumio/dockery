@@ -77,7 +77,10 @@ const printHelp = (
 
     const printText =
       ` ${argNames.join(' ')}${getArgType(arg.types)}\n`
-      + `    ${arg.desc}`;
+      + (arg.desc || '')
+        .split('\n')
+        .map(d => '    ' + d)
+        .join('\n');
 
     output.push(printText);
   }
