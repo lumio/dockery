@@ -15,7 +15,6 @@ interface ArgValues {
 }
 
 const globalValidArguments: ValidArguments = {
-  s: { alias: 'hash-prefix' },
   d: { alias: 'directory' },
   directory: {
     desc: 'Set current work directory',
@@ -43,6 +42,7 @@ const globalValidArguments: ValidArguments = {
     desc: 'Push docker image to registry',
     types: ['boolean'],
   },
+  s: { alias: 'hash-prefix' },
   tag: {
     desc: 'Set manual tag name. Default is the package version number.',
     types: ['string', 'number'],

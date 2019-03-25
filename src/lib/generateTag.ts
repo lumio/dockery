@@ -33,7 +33,7 @@ const validateTag = (tag: string) => {
   }
 
   return true;
-}
+};
 
 const generateTag = async (argv: ArgValues, cwd: string) => {
   let packageInfo: PackageInfo;
