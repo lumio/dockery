@@ -30,5 +30,5 @@ process.on('unhandledRejection', (reason, p) => {
   await failOnError(buildPackage, cwd, quiet);
   await failOnError(buildImage, tag, cwd, quiet);
 
-  !quiet && console.log(kleur.green('Finished'));
+  if (!quiet) console.log(kleur.green('Finished'));
 })();

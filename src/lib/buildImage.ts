@@ -43,7 +43,7 @@ const buildImage = async (tag: string, cwd: string, quiet: boolean = false) => {
       quiet,
     );
   } catch (e) {
-    throw new Error(`Docker build command failed`);
+    throw new Error('Docker build command failed');
   }
 };
 
