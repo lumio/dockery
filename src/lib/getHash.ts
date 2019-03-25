@@ -1,6 +1,6 @@
 import runCommand from './runCommand';
 
-const getHash = async (cwd?: string): Promise<string | boolean> => {
+const getHash = async (cwd?: string): Promise<string> => {
   try {
     const result = await runCommand(
       'git',
@@ -12,13 +12,15 @@ const getHash = async (cwd?: string): Promise<string | boolean> => {
     const hash = result.stdout.trim();
 
     if (!hash) {
-      return false;
+      throw new Error('Could not retrieve latest git commit hash');
     }
 
     return hash;
   } catch (e) {
-    return false;
+    throw new Error('Failed to retrieve latest git commit hash. Is this a git repo?');
   }
+
+  return '';
 };
 
 export default getHash;
