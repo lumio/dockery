@@ -11,7 +11,7 @@ describe('generateTag', () => {
         version: '1.0.0',
       },
     );
-    expect(tag).toBe('test:v1.0.0');
+    expect(tag).toBe('test/test-package:v1.0.0');
   });
 
   it('generate tag from argv', async () => {
@@ -27,6 +27,6 @@ describe('generateTag', () => {
         version: '1.0.0',
       },
     );
-    expect(tag).toBe('test-repo:test');
+    expect(tag).toBe('test-repo/test-package:test');
   });
 });
