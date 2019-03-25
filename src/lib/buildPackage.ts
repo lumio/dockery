@@ -8,7 +8,7 @@ const buildPackage = async (cwd: string, quiet: boolean = false) => {
     : 'npm';
 
   try {
-    const result = await runCommand(
+    await runCommand(
       command,
       ['run', 'build'],
       cwd,
@@ -16,10 +16,10 @@ const buildPackage = async (cwd: string, quiet: boolean = false) => {
     );
   } catch (e) {
     if (e.exitCode) {
-      throw new Error('Build command failed. Process exited with a non-zero code');
+      throw new Error('Package build command failed. Process exited with a non-zero code');
     }
 
-    throw new Error('Build command failed');
+    throw new Error('Package build command failed');
   }
 
   return true;
