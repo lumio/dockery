@@ -39,16 +39,18 @@ const validateTag = (tag: string) => {
   return true;
 };
 
-const generateTag = async (argv: ArgValues, cwd: string) => {
-  let packageInfo: PackageInfo;
+const loadPackageInfo = (cwd: string) => {
   try {
-    packageInfo = require(
+    return require(
       path.resolve(cwd, 'package.json'),
     );
   } catch (e) {
     throw new Error(`Cannot read package.json in ${cwd}`);
   }
+};
 
+const generateTag = async (argv: ArgValues, cwd: string, overwritePackageInfo?: PackageInfo) => {
+  const packageInfo: PackageInfo = overwritePackageInfo || loadPackageInfo(cwd);
   const repoName = getRepoName(argv, packageInfo);
   if (!repoName) {
     throw new Error(
@@ -75,7 +77,7 @@ const generateTag = async (argv: ArgValues, cwd: string) => {
   if (!tagName) {
     throw new Error(
       'No tag name could be generated, because there is no version being set'
-      + ' in your package.json'
+      + ' in your package.json',
     );
   }
 
