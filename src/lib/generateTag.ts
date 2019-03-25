@@ -10,7 +10,11 @@ interface PackageInfo {
   'docker-repo'?: string;
 }
 
-const getRepoName = (packageInfo: PackageInfo) => {
+const getRepoName = (argv: ArgValues, packageInfo: PackageInfo) => {
+  if (argv.repo) {
+    return argv.repo;
+  }
+
   const dockerRepo = packageInfo['docker-repository'] || packageInfo['docker-repo'];
   if (dockerRepo) {
     return dockerRepo;
@@ -45,7 +49,7 @@ const generateTag = async (argv: ArgValues, cwd: string) => {
     throw new Error(`Cannot read package.json in ${cwd}`);
   }
 
-  const repoName = getRepoName(packageInfo);
+  const repoName = getRepoName(argv, packageInfo);
   if (!repoName) {
     throw new Error(
       'No docker repository name found.\n'
@@ -61,9 +65,18 @@ const generateTag = async (argv: ArgValues, cwd: string) => {
   }
   else if (argv.hash) {
     tagName = await getHash();
+    tagName = (argv['tag-prefix'] || '') + tagName;
     validateTag(tagName);
-    tagName = (argv['hash-prefix'] || '') + tagName;
-    validateTag(tagName);
+  }
+  else if (packageInfo.version) {
+    tagName = (argv['tag-prefix'] || '') + packageInfo.version;
+  }
+
+  if (!tagName) {
+    throw new Error(
+      'No tag name could be generated, because there is no version being set'
+      + ' in your package.json'
+    );
   }
 
   return `${repoName}:${tagName}`;

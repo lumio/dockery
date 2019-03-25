@@ -20,6 +20,7 @@ const globalValidArguments: ValidArguments = {
     desc: 'Set current work directory',
     types: ['string'],
   },
+  e: { alias: 'tag-prefix' },
   'fail-if-existing': {
     desc: 'Fail if the image already exists',
     types: ['boolean'],
@@ -30,10 +31,6 @@ const globalValidArguments: ValidArguments = {
     types: ['boolean'],
     uniqueGroup: 'tag',
   },
-  'hash-prefix': {
-    desc: 'Prefix of a hash tag. E.g. "build-". Default is none',
-    types: ['string'],
-  },
   help: {
     desc: 'Show this help text',
     types: ['boolean'],
@@ -42,11 +39,19 @@ const globalValidArguments: ValidArguments = {
     desc: 'Push docker image to registry',
     types: ['boolean'],
   },
-  s: { alias: 'hash-prefix' },
+  repo: {
+    desc: 'Set the docker repo.\nDefault is read from the docker-repository '
+      + 'field in\nyour package.json',
+    types: ['string', 'number'],
+  },
   tag: {
     desc: 'Set manual tag name. Default is the package version number.',
     types: ['string', 'number'],
     uniqueGroup: 'tag',
+  },
+  'tag-prefix': {
+    desc: 'Prefix of the generated tag. E.g. "build-". Default is none',
+    types: ['string'],
   },
 };
 
