@@ -35,6 +35,11 @@ const globalValidArguments: ValidArguments = {
     desc: 'Show this help text',
     types: ['boolean'],
   },
+  package: {
+    desc: 'Set the package name.\nDefault is read from the name field in\nyour '
+      + 'package.json',
+    types: ['string', 'number'],
+  },
   push: {
     desc: 'Push docker image to registry',
     types: ['boolean'],

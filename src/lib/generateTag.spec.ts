@@ -14,10 +14,11 @@ describe('generateTag', () => {
     expect(tag).toBe('test/test-package:v1.0.0');
   });
 
-  it('generate tag from argv', async () => {
+  it('generates tag from argv', async () => {
     const tag = await generateTag(
       {
         _: [],
+        package: 'overwritten',
         repo: 'test-repo',
         tag: 'test',
       },
@@ -27,6 +28,18 @@ describe('generateTag', () => {
         version: '1.0.0',
       },
     );
-    expect(tag).toBe('test-repo/test-package:test');
+    expect(tag).toBe('test-repo/overwritten:test');
+  });
+
+  it('generates tag from scoped package name', async () => {
+    const tag = await generateTag(
+      { _: [] },
+      __dirname,
+      {
+        name: '@test-repo/test-package',
+        version: '1.0.0',
+      },
+    );
+    expect(tag).toBe('test-repo/test-package:1.0.0');
   });
 });

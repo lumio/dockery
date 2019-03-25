@@ -27,13 +27,31 @@ const getRepoName = (argv: ArgValues, packageInfo: PackageInfo) => {
   return false;
 };
 
+const getPackageName = (argv: ArgValues, packageInfo: PackageInfo) => {
+  if (argv.package) {
+    return argv.package;
+  }
+
+  if (packageInfo.name.substring(0, 1) === '@') {
+    return packageInfo.name.split('/').pop();
+  }
+  else {
+    return packageInfo.name;
+  }
+
+  return false;
+};
+
 const validateTag = (tag: string) => {
   if (!tag) {
     throw new Error('No tag or repo name received');
   }
 
-  if (tag.match(/[\s\/]+/)) {
-    throw new Error('No spaces nor slashes are allowed in a tag/repo name');
+  if (!tag.match(/^[\w\-_]+$/)) {
+    throw new Error(
+      `Only alphanumeric characters, dashes and underscores are`
+      + ` allowed in a tag/repo name. Got ${tag}`
+    );
   }
 
   return true;
@@ -60,6 +78,14 @@ const generateTag = async (argv: ArgValues, cwd: string, overwritePackageInfo?: 
   }
   validateTag(repoName);
 
+  const packageName = getPackageName(argv, packageInfo);
+  if (!packageName) {
+    throw new Error(
+      'No package name found. Invalid package.json?',
+    );
+  }
+  validateTag(packageName);
+
   let tagName: string = '';
   if (argv.tag) {
     validateTag(argv.tag);
@@ -81,7 +107,7 @@ const generateTag = async (argv: ArgValues, cwd: string, overwritePackageInfo?: 
     );
   }
 
-  return `${repoName}/${packageInfo.name}:${tagName}`;
+  return `${repoName}/${packageName}:${tagName}`;
 };
 
 export default generateTag;
