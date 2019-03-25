@@ -35,11 +35,8 @@ const getPackageName = (argv: ArgValues, packageInfo: PackageInfo) => {
   if (packageInfo.name.substring(0, 1) === '@') {
     return packageInfo.name.split('/').pop();
   }
-  else {
-    return packageInfo.name;
-  }
 
-  return false;
+  return packageInfo.name;
 };
 
 const validateTag = (tag: string) => {
@@ -49,8 +46,8 @@ const validateTag = (tag: string) => {
 
   if (!tag.match(/^[\w\-_]+$/)) {
     throw new Error(
-      `Only alphanumeric characters, dashes and underscores are`
-      + ` allowed in a tag/repo name. Got ${tag}`
+      'Only alphanumeric characters, dashes and underscores are'
+      + ` allowed in a tag/repo name. Got ${tag}`,
     );
   }
 
