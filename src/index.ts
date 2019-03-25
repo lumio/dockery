@@ -5,6 +5,7 @@ import path from 'path';
 
 import collectArguments from './lib/args/collectArguments';
 import printHelp from './lib/args/printHelp';
+import buildPackage from './lib/buildPackage';
 import failOnError from './lib/failOnError';
 import generateTag from './lib/generateTag';
 
@@ -23,6 +24,7 @@ process.on('unhandledRejection', (reason, p) => {
     process.exit(1);
   }
 
-  const tag = await failOnError(() => generateTag(argv, cwd));
+  const tag = await failOnError(generateTag, argv, cwd);
+  await failOnError(buildPackage, cwd, (argv.quiet || false));
   console.log(tag);
 })();

@@ -1,11 +1,20 @@
 import kleur from 'kleur';
+import util from 'util';
 
-const failOnError = async <T>(fn: () => T) => {
+const failOnError = async <T>(fn: (...args: any[]) => T, ...args: any[]) => {
   try {
-    return await fn();
+    const result = await fn(...args);
+    return result;
   } catch (e) {
     const message = e.message || e.toString();
-    console.error(kleur.red('ERROR!\n') + kleur.yellow(message));
+    console.error(kleur.red('ERROR!'));
+    if (message === '[object Object]') {
+      console.error(kleur.yellow('No error message found; printing error object'));
+      console.error(util.inspect(e, false, null, true));
+    }
+    else {
+      console.error(kleur.yellow(message));
+    }
     process.exit(1);
   }
 
