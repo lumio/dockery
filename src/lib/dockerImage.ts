@@ -12,10 +12,7 @@ const checkIfImageExists = async (tag, cwd) => {
     }
 
     const lineTokens = line.split(/\s+/);
-
     if (tagTokens[0] === lineTokens[0] && tagTokens[1] === lineTokens[1]) {
-      // console.error( kleur.red( `Tag ${ kleur.bold( tag ) } already exists` ) );
-      // process.exit( 1 );
       return true;
     }
   }
