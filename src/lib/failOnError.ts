@@ -1,8 +1,8 @@
 import kleur from 'kleur';
 
-const failOnError = <T>(fn: () => T) => {
+const failOnError = async <T>(fn: () => T) => {
   try {
-    return fn();
+    return await fn();
   } catch (e) {
     const message = e.message || e.toString();
     console.error(kleur.red('ERROR!\n') + kleur.yellow(message));
