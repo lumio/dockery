@@ -81,7 +81,7 @@ const generateTag = async (argv: ArgValues, cwd: string, overwritePackageInfo?: 
     );
   }
 
-  return `${repoName}:${tagName}`;
+  return `${repoName}/${packageInfo.name}:${tagName}`;
 };
 
 export default generateTag;
