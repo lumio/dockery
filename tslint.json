@@ -6,7 +6,11 @@
   ],
   "jsRules": {},
   "rules": {
-    "no-console": false
+    "brace-style": false,
+    "interface-name": [true, "never-prefix"],
+    "no-console": false,
+    "one-line": [true, "check-catch", "check-finally", "check-whitespace"],
+    "prefer-template": false
   },
   "rulesDirectory": []
 }

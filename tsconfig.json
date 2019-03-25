@@ -4,19 +4,18 @@
     "module": "commonjs",
     "sourceMap": true,
     "outDir": "dist",
-    "isolatedModules": true,
 
     "strict": true,
     "noImplicitAny": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "strictNullChecks": true,
 
     "moduleResolution": "node",
-    "baseUrl": "src",
+    "rootDir": "src",
     "typeRoots": ["node_modules/@types"],
-    "types": ["node"],
+    "types": ["node", "jest"],
     "esModuleInterop": true
   }
 }
