@@ -1,4 +1,8 @@
-import generateTag from './generateTag';
+import generateTag, {
+  getRepoName,
+  validateTag,
+  loadPackageInfo,
+} from './generateTag';
 
 describe('generateTag', () => {
   it('get tag from package info with tag prefix', async () => {
@@ -41,5 +45,26 @@ describe('generateTag', () => {
       },
     );
     expect(tag).toBe('test-repo/test-package:1.0.0');
+  });
+
+  it('getRepoName returns false if no repo info was specified', () => {
+    expect(getRepoName({ _: []}, { name: '', version: '' })).toBe(false);
+  });
+
+  it('loadPackageInfo throws error if unable to load package info', () => {
+    expect(() => loadPackageInfo('/some-non-existing-path'))
+      .toThrow('Cannot read package.json in /some-non-existing-path');
+  });
+
+  it('validateTag throws error on empty input', () => {
+    expect(() => validateTag('')).toThrow('No tag or repo name received');
+  });
+
+  it('validateTag throws error on invalid input', () => {
+    expect(() => validateTag('test-with-@symbols!'))
+      .toThrow(
+        'Only alphanumeric characters, dashes and underscores are'
+        + ' allowed in a tag/repo name. Got test-with-@symbols!'
+      );
   });
 });
