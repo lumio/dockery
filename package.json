@@ -39,6 +39,9 @@
     "typescript": "3.3.4000"
   },
   "jest": {
-    "preset": "ts-jest"
+    "preset": "ts-jest",
+    "collectCoverage": true,
+    "coverageDirectory": "coverage",
+    "coverageReporters": ["json"]
   }
 }
