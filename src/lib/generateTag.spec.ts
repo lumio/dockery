@@ -1,7 +1,7 @@
 import generateTag, {
   getRepoName,
-  validateTag,
   loadPackageInfo,
+  validateTag,
 } from './generateTag';
 
 describe('generateTag', () => {
@@ -48,7 +48,7 @@ describe('generateTag', () => {
   });
 
   it('getRepoName returns false if no repo info was specified', () => {
-    expect(getRepoName({ _: []}, { name: '', version: '' })).toBe(false);
+    expect(getRepoName({ _: [] }, { name: '', version: '' })).toBe(false);
   });
 
   it('loadPackageInfo throws error if unable to load package info', () => {
@@ -64,7 +64,7 @@ describe('generateTag', () => {
     expect(() => validateTag('test-with-@symbols!'))
       .toThrow(
         'Only alphanumeric characters, dashes and underscores are'
-        + ' allowed in a tag/repo name. Got test-with-@symbols!'
+        + ' allowed in a tag/repo name. Got test-with-@symbols!',
       );
   });
 });
