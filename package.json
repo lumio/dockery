@@ -41,7 +41,6 @@
   "jest": {
     "preset": "ts-jest",
     "collectCoverage": true,
-    "coverageDirectory": "coverage",
-    "coverageReporters": ["json"]
+    "coverageDirectory": "coverage"
   }
 }
