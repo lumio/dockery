@@ -1,6 +1,6 @@
 {
   "name": "dockery",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Build your package and create docker image",
   "docker-repo": "non-repo",
   "main": "dist/index.js",
