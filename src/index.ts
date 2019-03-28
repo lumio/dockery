@@ -4,6 +4,7 @@ import kleur from 'kleur';
 import path from 'path';
 
 import collectArguments from './lib/args/collectArguments';
+import checkIfImageExists from './lib/checkIfImageExists';
 import printHelp from './lib/args/printHelp';
 import buildImage from './lib/buildImage';
 import buildPackage from './lib/buildPackage';
@@ -31,6 +32,7 @@ failOnError(async () => {
   }
 
   const tag = await generateTag(argv, cwd);
+  await checkIfImageExists(tag, cwd);
   log(kleur.gray('Building package...'), quiet);
   await buildPackage(cwd, quiet);
   log(kleur.gray('Building image...'), quiet);
