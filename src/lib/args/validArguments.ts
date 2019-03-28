@@ -44,6 +44,11 @@ const globalValidArguments: ValidArguments = {
     desc: 'Push docker image to registry',
     types: ['boolean'],
   },
+  q: { alias: 'quiet' },
+  quiet: {
+    desc: 'Disable most of the log outputs',
+    types: ['boolean'],
+  },
   repo: {
     desc: 'Set the docker repo.\nDefault is read from the docker-repository '
       + 'field in\nyour package.json',
