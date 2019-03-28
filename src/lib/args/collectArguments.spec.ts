@@ -8,8 +8,8 @@ describe('collectArguments', () => {
 
   it('should throw when invalid argument type given', () => {
     const validArguments = {
-      foo: { types: ['number'] },
       bar: { types: ['number', 'string'] },
+      foo: { types: ['number'] },
     };
     const givenArguments1 = {
       _: [],
@@ -29,7 +29,10 @@ describe('collectArguments', () => {
       .toThrow('Expected --foo to be of type number but got string');
 
     expect(() => collectArguments(givenArguments3, validArguments))
-      .toThrow('Expected --bar to be one of number, string but got object.\nTry dockery --help for help.');
+      .toThrow(
+        'Expected --bar to be one of number, string but got object.\n'
+        + 'Try dockery --help for help.',
+      );
   });
 
   it('should throw when multiple arguments of same group get passed along', () => {
