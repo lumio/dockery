@@ -1,6 +1,3 @@
-import kleur from 'kleur';
-
-import { ArgValues } from './args';
 import runCommand from './runCommand';
 
 const pushImage = async (tag: string, cwd: string, quiet: boolean = false) => {
