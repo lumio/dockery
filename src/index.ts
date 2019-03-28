@@ -4,10 +4,10 @@ import kleur from 'kleur';
 import path from 'path';
 
 import collectArguments from './lib/args/collectArguments';
-import checkIfImageExists from './lib/checkIfImageExists';
 import printHelp from './lib/args/printHelp';
 import buildImage from './lib/buildImage';
 import buildPackage from './lib/buildPackage';
+import checkIfImageExists from './lib/checkIfImageExists';
 import failOnError from './lib/failOnError';
 import generateTag from './lib/generateTag';
 import pushImage from './lib/pushImage';
