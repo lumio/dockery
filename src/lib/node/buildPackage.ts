@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import runCommand from './runCommand';
+import runCommand from '../runCommand';
 
 const buildPackage = async (cwd: string, quiet: boolean = false) => {
   const command = fs.existsSync(path.resolve(cwd, 'yarn.lock'))

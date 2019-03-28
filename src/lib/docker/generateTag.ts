@@ -1,7 +1,7 @@
 import path from 'path';
 
-import { ArgValues } from './args';
-import getHash from './getHash';
+import { ArgValues } from '../args';
+import getHash from '../getHash';
 
 interface PackageInfo {
   name: string;

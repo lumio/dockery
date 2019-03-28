@@ -1,4 +1,4 @@
-import runCommand from './runCommand';
+import runCommand from '../runCommand';
 
 const checkIfImageExists = async (tag: string, cwd: string) => {
   let result;
