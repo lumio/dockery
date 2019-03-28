@@ -9,6 +9,7 @@ import buildImage from './lib/buildImage';
 import buildPackage from './lib/buildPackage';
 import failOnError from './lib/failOnError';
 import generateTag from './lib/generateTag';
+import pushImage from './lib/pushImage';
 
 process.on('unhandledRejection', (reason, p) => {
   console.error(kleur.red('Unhandled Rejection at: Promise'), p);
