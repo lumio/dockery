@@ -7,6 +7,7 @@ import collectArguments from './lib/args/collectArguments';
 import printHelp from './lib/args/printHelp';
 import buildImage from './lib/buildImage';
 import buildPackage from './lib/buildPackage';
+import checkIfImageExists from './lib/checkIfImageExists';
 import failOnError from './lib/failOnError';
 import generateTag from './lib/generateTag';
 import pushImage from './lib/pushImage';
@@ -31,6 +32,7 @@ failOnError(async () => {
   }
 
   const tag = await generateTag(argv, cwd);
+  await checkIfImageExists(tag, cwd);
   log(kleur.gray('Building package...'), quiet);
   await buildPackage(cwd, quiet);
   log(kleur.gray('Building image...'), quiet);
