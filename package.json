@@ -19,7 +19,7 @@
   "scripts": {
     "start": "ts-node index.ts",
     "test": "jest",
-    "lint": "tslint -t stylish \"src/**/*.ts\"",
+    "lint": "tslint -p . -t stylish \"src/**/*.ts\"",
     "build": "(rm -rf dist; tsc -p tsconfig.prod.json) && chmod +x dist/index.js",
     "prepublishOnly": "npm run test && npm run build"
   },

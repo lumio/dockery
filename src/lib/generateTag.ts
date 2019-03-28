@@ -108,3 +108,9 @@ const generateTag = async (argv: ArgValues, cwd: string, overwritePackageInfo?: 
 };
 
 export default generateTag;
+export {
+  getRepoName,
+  getPackageName,
+  validateTag,
+  loadPackageInfo,
+};
