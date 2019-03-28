@@ -25,7 +25,8 @@ jobs:
       - run: yarn test
       - run: yarn lint
       - run: yarn build
+      - run: "echo \"Just a test\""
 
       - codecov/upload:
           file: coverage/lcov.info
-          flags: frontend
+          flags: unittests
