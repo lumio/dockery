@@ -1,4 +1,6 @@
 version: 2
+orbs:
+  codecov: codecov/codecov@1.0.2
 jobs:
   build:
     docker:
@@ -24,7 +26,5 @@ jobs:
       - run: yarn lint
       - run: yarn build
 
-      - run:
-          name: Upload coverage
-          command: codecov
-          when: on_success
+      - codecov/upload:
+          file: coverage/lcov.info
