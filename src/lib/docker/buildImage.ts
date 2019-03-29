@@ -1,4 +1,4 @@
-import runCommand from './runCommand';
+import runCommand from '../runCommand';
 
 const buildImage = async (tag: string, cwd: string, quiet: boolean = false) => {
   try {

@@ -1,4 +1,4 @@
-import runCommand from './runCommand';
+import runCommand from '../runCommand';
 
 const pushImage = async (tag: string, cwd: string, quiet: boolean = false) => {
   const result = await runCommand('docker', ['push', tag], cwd, quiet);

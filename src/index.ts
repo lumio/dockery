@@ -5,12 +5,12 @@ import path from 'path';
 
 import collectArguments from './lib/args/collectArguments';
 import printHelp from './lib/args/printHelp';
-import buildImage from './lib/buildImage';
-import buildPackage from './lib/buildPackage';
-import checkIfImageExists from './lib/checkIfImageExists';
+import buildImage from './lib/docker/buildImage';
+import checkIfImageExists from './lib/docker/checkIfImageExists';
+import generateTag from './lib/docker/generateTag';
+import pushImage from './lib/docker/pushImage';
 import failOnError from './lib/failOnError';
-import generateTag from './lib/generateTag';
-import pushImage from './lib/pushImage';
+import buildPackage from './lib/node/buildPackage';
 
 process.on('unhandledRejection', (reason, p) => {
   console.error(kleur.red('Unhandled Rejection at: Promise'), p);
