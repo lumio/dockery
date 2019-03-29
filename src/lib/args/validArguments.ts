@@ -17,14 +17,10 @@ interface ArgValues {
 const globalValidArguments: ValidArguments = {
   d: { alias: 'directory' },
   directory: {
-    desc: 'Set current work directory',
+    desc: 'Sets the work directory',
     types: ['string'],
   },
   e: { alias: 'tag-prefix' },
-  'fail-if-existing': {
-    desc: 'Fail if the image already exists',
-    types: ['boolean'],
-  },
   h: { alias: 'help' },
   hash: {
     desc: 'Use latest commit hash as tag name',

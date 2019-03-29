@@ -44,9 +44,9 @@ const validateTag = (tag: string) => {
     throw new Error('No tag or repo name received');
   }
 
-  if (!tag.match(/^[\w\-_]+$/)) {
+  if (!tag.match(/^[\w\-_.]+$/)) {
     throw new Error(
-      'Only alphanumeric characters, dashes and underscores are'
+      'Only alphanumeric characters, dashes, dots and underscores are'
       + ` allowed in a tag/repo name. Got ${tag}`,
     );
   }
