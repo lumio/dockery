@@ -63,7 +63,7 @@ describe('generateTag', () => {
   it('validateTag throws error on invalid input', () => {
     expect(() => validateTag('test-with-@symbols!'))
       .toThrow(
-        'Only alphanumeric characters, dashes and underscores are'
+        'Only alphanumeric characters, dashes, dots and underscores are'
         + ' allowed in a tag/repo name. Got test-with-@symbols!',
       );
   });
