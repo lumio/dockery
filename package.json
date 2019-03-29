@@ -1,7 +1,14 @@
 {
   "name": "dockery",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Build your package and create docker image",
+  "keywords": [
+    "docker",
+    "automation",
+    "containerize",
+    "container",
+    "continuous-integration"
+  ],
   "docker-repo": "non-repo",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
