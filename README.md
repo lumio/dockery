@@ -48,7 +48,7 @@ dockery --hash
 
 This will read the hash of the last git commit and use it as the tag name.
 
-### Manual tagged image
+### Publishing a manual tagged image
 
 ```bash
 dockery --repo=test --package=test-pkg --tag=v1.0.0-alpha1 --push
