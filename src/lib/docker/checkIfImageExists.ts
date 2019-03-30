@@ -1,6 +1,10 @@
 import runCommand from '../runCommand';
 
-const checkIfImageExists = async (tag: string, cwd: string) => {
+const checkIfImageExists = async (
+  tag: string,
+  cwd: string,
+  failIfExists: boolean = true,
+): Promise<string | false> => {
   let result;
   try {
     result = await runCommand('docker', ['images'], cwd, true);
@@ -21,9 +25,11 @@ const checkIfImageExists = async (tag: string, cwd: string) => {
     }
 
     const imageParts = image.split(/\s+/);
-    if (tagParts[0] === imageParts[0] && tagParts[1] === imageParts[1]) {
+    if (tagParts[0] === imageParts[0] && tagParts[1] === imageParts[1] && failIfExists) {
       throw new Error(`Image with the tag ${tag} already exists`);
     }
+
+    return imageParts[2];
   }
 
   return false;

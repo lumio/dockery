@@ -21,6 +21,11 @@ const globalValidArguments: ValidArguments = {
     types: ['string'],
   },
   e: { alias: 'tag-prefix' },
+  f: { alias: 'force' },
+  force: {
+    desc: 'Overwrites an existing image',
+    types: ['boolean'],
+  },
   h: { alias: 'help' },
   hash: {
     desc: 'Use latest commit hash as tag name',
