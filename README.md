@@ -28,12 +28,14 @@ Usage
 ---
 
 ```bash
-dockery
+dockery -f
 ```
 
 Combines the package.json's `name` and `version` number as a tag name, builds the
 package by running `npm run build` (or `yarn run build`) and then builds the
 docker image, using a `Dockerfile`.
+
+The `-f` flag overwrites an existing image with the same tag name.
 
 Note that in order to generate a valid image tag name the `name` needs to be
 scoped, e.g. begins with `@dockery/`.
@@ -67,6 +69,8 @@ dockery [options]
 
  -d --directory=STRING
     Sets the work directory
+ -f --force
+    Overwrites an existing image
  --hash
     Use latest commit hash as tag name
  -h --help
