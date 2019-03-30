@@ -9,6 +9,7 @@ import buildImage from './lib/docker/buildImage';
 import checkIfImageExists from './lib/docker/checkIfImageExists';
 import generateTag from './lib/docker/generateTag';
 import pushImage from './lib/docker/pushImage';
+import removeImage from './lib/docker/removeImage';
 import failOnError from './lib/failOnError';
 import buildPackage from './lib/node/buildPackage';
 
@@ -32,7 +33,16 @@ failOnError(async () => {
   }
 
   const tag = await generateTag(argv, cwd);
-  await checkIfImageExists(tag, cwd);
+  const overwriteImage = !!argv.force;
+  const image = await checkIfImageExists(tag, cwd, !overwriteImage);
+  if (overwriteImage && image) {
+    log(kleur.gray(`Removing existing image ${kleur.bold(image)}...`), quiet);
+    await removeImage(image, cwd);
+  }
+  else {
+    throw new Error('Existing image check failed');
+  }
+
   log(kleur.gray('Building package...'), quiet);
   await buildPackage(cwd, quiet);
   log(kleur.gray('Building image...'), quiet);
