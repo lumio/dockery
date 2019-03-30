@@ -25,11 +25,12 @@ const checkIfImageExists = async (
     }
 
     const imageParts = image.split(/\s+/);
-    if (tagParts[0] === imageParts[0] && tagParts[1] === imageParts[1] && failIfExists) {
+    if (tagParts[0] === imageParts[0] && tagParts[1] === imageParts[1]) {
+      if (!failIfExists) {
+        return imageParts[2];
+      }
       throw new Error(`Image with the tag ${tag} already exists`);
     }
-
-    return imageParts[2];
   }
 
   return false;
