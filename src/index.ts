@@ -39,7 +39,7 @@ failOnError(async () => {
     log(kleur.gray(`Removing existing image ${kleur.bold(image)}...`), quiet);
     await removeImage(image, cwd);
   }
-  else {
+  else if (image) {
     throw new Error('Existing image check failed');
   }
 
