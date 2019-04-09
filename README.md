@@ -11,9 +11,11 @@ You can decide how to tag your image:
 - The **default** uses the version number of package.json.
 - **`--hash`** uses the hash of the latest git commit.
 - **`--tag`** sets the tag name manually (in combination with the given repo and package name)
+- **`--latest`** tags the image as being the latest version.
 
 To push a built docker image to docker hub, you need to be logged in
-with `docker login`.
+with `docker login`. You can also use `dockery` with a different registry by
+passing the `--registry` argument.
 
 Install
 ---
@@ -75,6 +77,8 @@ dockery [options]
     Use latest commit hash as tag name
  -h --help
     Show this help text
+ -l --latest
+    Tag as latest
  --package=ALPHANUMERIC
     Set the package name.
     Default is read from the name field in
@@ -83,6 +87,8 @@ dockery [options]
     Push docker image to registry
  -q --quiet
     Disable most of the log outputs
+ -r --registry=STRING
+    Use a custom registry
  --repo=ALPHANUMERIC
     Set the docker repo.
     Default is read from the docker-repository field in

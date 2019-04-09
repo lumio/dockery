@@ -36,6 +36,12 @@ const globalValidArguments: ValidArguments = {
     desc: 'Show this help text',
     types: ['boolean'],
   },
+  l: { alias: 'latest' },
+  latest: {
+    desc: 'Tag as latest',
+    types: ['boolean'],
+    uniqueGroup: 'tag',
+  },
   package: {
     desc: 'Set the package name.\nDefault is read from the name field in\nyour '
       + 'package.json',
@@ -49,6 +55,11 @@ const globalValidArguments: ValidArguments = {
   quiet: {
     desc: 'Disable most of the log outputs',
     types: ['boolean'],
+  },
+  r: { alias: 'registry' },
+  registry: {
+    desc: 'Use a custom registry',
+    types: ['string'],
   },
   repo: {
     desc: 'Set the docker repo.\nDefault is read from the docker-repository '

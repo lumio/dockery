@@ -51,7 +51,7 @@ const validateTag = (tag: string) => {
     );
   }
 
-  return true;
+  return tag;
 };
 
 const loadPackageInfo = (cwd: string) => {
@@ -75,6 +75,8 @@ const generateTag = async (argv: ArgValues, cwd: string, overwritePackageInfo?: 
   }
   validateTag(repoName);
 
+  const registry = argv.registry ? validateTag(argv.registry) + '/' : '';
+
   const packageName = getPackageName(argv, packageInfo);
   if (!packageName) {
     throw new Error(
@@ -93,18 +95,21 @@ const generateTag = async (argv: ArgValues, cwd: string, overwritePackageInfo?: 
     tagName = (argv['tag-prefix'] || '') + tagName;
     validateTag(tagName);
   }
-  else if (packageInfo.version) {
+  else if (packageInfo.version && !argv.latest) {
     tagName = (argv['tag-prefix'] || '') + packageInfo.version;
   }
 
-  if (!tagName) {
+  if (!tagName && !argv.latest) {
     throw new Error(
       'No tag name could be generated, because there is no version being set'
       + ' in your package.json',
     );
   }
+  else if (tagName) {
+    tagName = ':' + tagName;
+  }
 
-  return `${repoName}/${packageName}:${tagName}`;
+  return `${registry}${repoName}/${packageName}${tagName}`;
 };
 
 export default generateTag;
