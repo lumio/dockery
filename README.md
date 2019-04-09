@@ -75,6 +75,8 @@ dockery [options]
     Use latest commit hash as tag name
  -h --help
     Show this help text
+ -l --latest
+    Tag as latest
  --package=ALPHANUMERIC
     Set the package name.
     Default is read from the name field in
@@ -83,6 +85,8 @@ dockery [options]
     Push docker image to registry
  -q --quiet
     Disable most of the log outputs
+ -r --registry=STRING
+    Use a custom registry
  --repo=ALPHANUMERIC
     Set the docker repo.
     Default is read from the docker-repository field in
