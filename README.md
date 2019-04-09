@@ -11,9 +11,11 @@ You can decide how to tag your image:
 - The **default** uses the version number of package.json.
 - **`--hash`** uses the hash of the latest git commit.
 - **`--tag`** sets the tag name manually (in combination with the given repo and package name)
+- **`--latest`** tags the image as being the latest version.
 
 To push a built docker image to docker hub, you need to be logged in
-with `docker login`.
+with `docker login`. You can also use `dockery` with a different registry by
+passing the `--registry` argument.
 
 Install
 ---
