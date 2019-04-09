@@ -36,6 +36,12 @@ const globalValidArguments: ValidArguments = {
     desc: 'Show this help text',
     types: ['boolean'],
   },
+  l: { alias: 'latest' },
+  latest: {
+    desc: 'Tag as latest',
+    types: ['boolean'],
+    uniqueGroup: 'tag',
+  },
   package: {
     desc: 'Set the package name.\nDefault is read from the name field in\nyour '
       + 'package.json',
