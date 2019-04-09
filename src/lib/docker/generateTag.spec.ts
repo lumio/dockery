@@ -47,6 +47,18 @@ describe('generateTag', () => {
     expect(tag).toBe('test-repo/test-package:1.0.0');
   });
 
+  it('generates tag with registry', async () => {
+    const tag = await generateTag(
+      { _: [], registry: 'com.example.registry' },
+      __dirname,
+      {
+        name: '@test-repo/test-package',
+        version: '1.0.0',
+      },
+    );
+    expect(tag).toBe('com.example.registry/test-repo/test-package:1.0.0');
+  });
+
   it('getRepoName returns false if no repo info was specified', () => {
     expect(getRepoName({ _: [] }, { name: '', version: '' })).toBe(false);
   });

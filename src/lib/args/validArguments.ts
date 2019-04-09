@@ -50,6 +50,11 @@ const globalValidArguments: ValidArguments = {
     desc: 'Disable most of the log outputs',
     types: ['boolean'],
   },
+  r: { alias: 'registry' },
+  registry: {
+    desc: 'Use a custom registry',
+    types: ['string'],
+  },
   repo: {
     desc: 'Set the docker repo.\nDefault is read from the docker-repository '
       + 'field in\nyour package.json',

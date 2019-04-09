@@ -51,7 +51,7 @@ const validateTag = (tag: string) => {
     );
   }
 
-  return true;
+  return tag;
 };
 
 const loadPackageInfo = (cwd: string) => {
@@ -74,6 +74,8 @@ const generateTag = async (argv: ArgValues, cwd: string, overwritePackageInfo?: 
     );
   }
   validateTag(repoName);
+
+  const registry = argv.registry ? validateTag(argv.registry) + '/' : '';
 
   const packageName = getPackageName(argv, packageInfo);
   if (!packageName) {
@@ -104,7 +106,7 @@ const generateTag = async (argv: ArgValues, cwd: string, overwritePackageInfo?: 
     );
   }
 
-  return `${repoName}/${packageName}:${tagName}`;
+  return `${registry}${repoName}/${packageName}:${tagName}`;
 };
 
 export default generateTag;
